@@ -9,9 +9,10 @@ return new class extends Migration {
         Schema::create('products', function (Blueprint $table) {
             $table->id('id_produk');
             $table->string('nama_tas');
-            $table->decimal('harga', 10, 2);
+            $table->decimal('harga');
             $table->integer('stok');
             $table->text('deskripsi')->nullable();
+            $table->string('gambar')->nullable();
             $table->timestamps();
         });
     }

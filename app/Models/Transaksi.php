@@ -3,10 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\TransaksiDetail;
-use App\Models\User;
 
-class Transaction extends Model
+class Transaksi extends Model
 {
     protected $table = 'transactions';
     protected $primaryKey = 'id_transaksi';
@@ -15,17 +13,15 @@ class Transaction extends Model
         'id_user',
         'tanggal',
         'total_harga',
-        'status'
+        'status',
     ];
 
-    // Relasi ke user
     public function user()
     {
         return $this->belongsTo(User::class, 'id_user', 'id_user');
     }
 
-    // Relasi ke detail transaksi
-    public function transaksiDetails()
+    public function details()
     {
         return $this->hasMany(TransaksiDetail::class, 'id_transaksi', 'id_transaksi');
     }

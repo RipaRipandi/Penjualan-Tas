@@ -6,9 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class TransaksiDetail extends Model
 {
-    protected $table = 'transaksi_details';    // pastikan sesuai nama tabel di DB
-    protected $primaryKey = 'id_detail';        // sesuai primary key di DB
-    public $timestamps = false;                  // jika tidak pakai created_at dan updated_at
+    protected $table = 'transaction_details';
+    protected $primaryKey = 'id_detail';
 
     protected $fillable = [
         'id_transaksi',
@@ -18,15 +17,13 @@ class TransaksiDetail extends Model
         'subtotal',
     ];
 
-    // Relasi ke transaksi
-    public function transaction()
+    public function transaksi()
     {
-        return $this->belongsTo(Transaction::class, 'id_transaksi', 'id_transaksi');
+        return $this->belongsTo(Transaksi::class, 'id_transaksi', 'id_transaksi');
     }
 
-    // Relasi ke produk
-    public function product()
+    public function produk()
     {
-        return $this->belongsTo(Product::class, 'id_produk', 'id_produk');
+        return $this->belongsTo(Produk::class, 'id_produk', 'id_produk');
     }
 }
